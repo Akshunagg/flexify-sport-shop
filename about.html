@@ -4,79 +4,503 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Flexify</title>
-<img src="https://raw.githubusercontent.com/Akshunagg/logooo/main/image.png" alt="logo" width="150" height="130" style="position: absolute; left: 0px; top: 7px;">
-   <style>
-        body {
+    <style>
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: white;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
 
         header {
-            background-color: #a9a276;
+            background-color: #B0A578;
             color: white;
-            padding: 25px;
-            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: 130px;
+            margin-right: 15px;
+        }
+
+        .store-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
         }
 
         nav a {
-            margin: 0 15px;
             color: white;
             text-decoration: none;
-            font-weight: ;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
 
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
+        .page-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 2.5rem;
+            color: #0a3d62;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: #B0A578;
+            margin: 10px auto;
+        }
+
+        .about-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+
+        .about-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            color: #0a3d62;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #B0A578;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .values-section {
+            background-color: #f0f2f5;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .values-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0a3d62;
+            font-size: 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #B0A578;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: #0a3d62;
+        }
+
+        .value-card p {
+            color: #666;
+        }
+
+        .cta-section {
+            background: linear-gradient(rgba(10, 61, 98, 0.9), rgba(10, 61, 98, 0.9));
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 60px;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #B0A578;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: #9c8e5f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
 
         footer {
             background-color: #0a3d62;
-            color: White;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #B0A578;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #B0A578;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #B0A578;
+            border-radius: 50%;
             text-align: center;
-            padding: 15px;
+            line-height: 40px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: #9c8e5f;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+
+            .logo-container {
+                margin-bottom: 10px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .about-section {
+                flex-direction: column;
+            }
+
+            .about-section:nth-child(even) {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Flexify-The Sport Store</h1>
-     <nav>
-
-       <a href="https://akshunagg.github.io/flexify-sport-shop/" target="_blank">Home</a>
-          <a href="https://akshunagg.github.io/flexify-sport-shop/about.html" target="_blank">About Us</a>
-<a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
-            <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
-     </nav>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/Akshunagg/logooo/main/image.png" alt="Flexify Logo" class="logo">
+                <div class="store-name">Flexify - The Sport Store</div>
+            </div>
+            <nav>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/">Home</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/about.html" target="_blank">About Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
+            </nav>
+        </div>
     </header>
 
+    <h1 class="page-title">About Flexify - The Sport Store</h1>
+    
+    <p class="about-intro">
+        Founded with a vision to redefine how athletes connect with gear, Flexify is more than a sports store — 
+        it's a movement. Built on passion, precision, and performance, we aim to inspire everyone to embrace the 
+        spirit of sport.
+    </p>
 
-<div class="container">
- <center>   
- <h1>Welcome to Flexify - The Sport Store</h1> 
- </center>
-   <h3>Our Story</h3>
-    <p>Founded with a vision to redefine how athletes connect with gear, **Flexify** is more than a sports store — it's a movement. Built on passion, precision, and performance, we aim to inspire everyone to embrace the spirit of sport, whether you're in the arena, on the court, or in your backyard.</p>
+    <div class="about-container">
+        <div class="about-section">
+            <div class="about-content">
+                <h2 class="section-title">Our Story</h2>
+                <p>Flexify was born from a simple idea: every athlete deserves access to high-quality equipment that enhances their performance and passion for the game. What started as a small local store has grown into a trusted destination for sports enthusiasts across the country.</p>
+                <p>Our journey began when our founder, a former professional athlete, noticed a gap in the market for a sports store that truly understood the needs of players at all levels. He envisioned a place where quality, expertise, and customer service would come together to create an exceptional shopping experience.</p>
+                <p>Today, we're proud to serve thousands of customers, from weekend warriors to professional athletes, helping them find the perfect gear to match their ambitions and push their limits.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Story">
+            </div>
+        </div>
 
-    <h3>What We Stand For</h3>
-    <p>At Flexify, we curate only the finest selection of sporting goods — equipment that echoes excellence, apparel that feels like a second skin, and accessories crafted for champions. Every item we offer is handpicked to match your drive and elevate your game.</p>
+        <div class="about-section">
+            <div class="about-content">
+                <h2 class="section-title">What We Stand For</h2>
+                <p>At Flexify, we curate only the finest selection of sporting goods — equipment that echoes excellence, apparel that feels like a second skin, and accessories crafted for champions. Every item we offer is handpicked to match your drive and elevate your game.</p>
+                <p>We believe that the right equipment can make all the difference. That's why we work directly with leading brands and manufacturers to ensure that every product we sell meets our rigorous standards for quality, durability, and performance.</p>
+                <p>Beyond just selling products, we're committed to building a community of sports enthusiasts who share our passion for excellence and continuous improvement.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="What We Stand For">
+            </div>
+        </div>
 
-    <h3>Why Choose Us?</h3>
-    <p>We’re not just sellers — we’re sport enthusiasts, players, and fans. With a deep understanding of every swing, sprint, and shot, we bring to you trusted brands, honest advice, and unmatched service. From beginners to pros, Flexify is your trusted companion in the journey of sport.</p>
+        <div class="about-section">
+            <div class="about-content">
+                <h2 class="section-title">Why Choose Us?</h2>
+                <p>We're not just sellers — we're sport enthusiasts, players, and fans. With a deep understanding of every swing, sprint, and shot, we bring to you trusted brands, honest advice, and unmatched service.</p>
+                <p>Our team consists of former athletes, coaches, and fitness experts who understand the nuances of different sports and can provide personalized recommendations based on your specific needs, skill level, and goals.</p>
+                <p>From beginners to pros, Flexify is your trusted companion in the journey of sport. We stand behind every product we sell with comprehensive warranties and a satisfaction guarantee.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Why Choose Us">
+            </div>
+        </div>
+    </div>
 
-    <h3>Step Into Greatness</h3>
-    <p>Explore. Equip. Excel. Welcome to Flexify — where your goals begin and greatness follows.</p>
-  </div>
+    <div class="values-section">
+        <div class="values-container">
+            <h2 class="values-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Performance</h3>
+                    <p>We prioritize products that enhance athletic performance and help you achieve your personal best.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3>Quality</h3>
+                    <p>Every product in our store meets rigorous quality standards to ensure durability and reliability.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Expertise</h3>
+                    <p>Our team consists of sports enthusiasts who provide knowledgeable advice and guidance.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3>Passion</h3>
+                    <p>We share your love for sports and are dedicated to supporting your athletic journey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
- 
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Step Into Greatness</h2>
+            <p class="cta-text">Explore. Equip. Excel. Welcome to Flexify — where your goals begin and greatness follows.</p>
+            <a href="https://akshunagg.github.io/flexify-sport-shop/" class="cta-button">Start Shopping</a>
+        </div>
+    </div>
 
-
-
-
-
-
-
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Flexify</h3>
+                <p>Your one-stop destination for premium sports equipment and accessories. We're passionate about helping athletes of all levels perform at their best.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/">Home</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/about.html" target="_blank">About Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📧 support@flexify.com</p>
+                <p>📞 +91-9876543210</p>
+                <p>📍 Flexify Sport Store, 2nd Floor, Galaxy Mall, Delhi - 110001, India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Flexify - The Sport Store. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>
-
-
-
