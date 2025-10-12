@@ -3,86 +3,473 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flexify-The Sport Store</title>
-
-
-<img src="https://raw.githubusercontent.com/Akshunagg/logooo/main/image.png" alt="Logo" width="150" height="130" style="position: absolute; left: 0px; top: 7px;">
-   <style>
-        body {
+    <title>Flexify - The Sport Store</title>
+    <style>
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: white;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
 
         header {
             background-color: #B0A578;
             color: white;
-            padding: 25px;
-            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: 130px;
+            margin-right: 15px;
+        }
+
+        .store-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
         }
 
         nav a {
-            margin: 0 15px;
             color: white;
             text-decoration: none;
-            font-weight: ;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
 
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
+        .hero-banner {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .banner-overlay h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-overlay p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #B0A578;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: #9c8e5f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 2rem;
+            color: #0a3d62;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #B0A578;
+            margin: 10px auto;
+        }
+
+        .sports-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .sport-card {
+            width: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+
+        .sport-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .sport-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .sport-card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sport-card h3 {
+            margin-bottom: 10px;
+            color: #0a3d62;
+        }
+
+        .sport-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .sport-link {
+            display: inline-block;
+            background-color: #0a3d62;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .sport-link:hover {
+            background-color: #B0A578;
+        }
+
+        .features {
+            background-color: #f0f2f5;
+            padding: 60px 0;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #B0A578;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+            color: #0a3d62;
+        }
+
+        .feature p {
+            color: #666;
+        }
 
         footer {
             background-color: #0a3d62;
-            color: White;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #B0A578;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #B0A578;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #B0A578;
+            border-radius: 50%;
             text-align: center;
-            padding: 15px;
+            line-height: 40px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: #9c8e5f;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+
+            .logo-container {
+                margin-bottom: 10px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            .hero-banner {
+                height: 400px;
+            }
+
+            .banner-overlay h2 {
+                font-size: 2rem;
+            }
+
+            .banner-overlay p {
+                font-size: 1rem;
+            }
+
+            .sport-card {
+                width: 100%;
+                max-width: 350px;
+            }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Flexify-The Sport Store</h1>
-     <nav>
-
-       <a href="https://akshunagg.github.io/flexify-sport-shop/" target="_blank">Home</a>
-          <a href="about.html" target="_blank">About Us</a>
-<a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
-            <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
-
-
-
-
-
-
-         
-
-
-     </nav>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/Akshunagg/logooo/main/image.png" alt="Flexify Logo" class="logo">
+                <div class="store-name">Flexify</div>
+            </div>
+            <nav>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/">Home</a>
+                <a href="about.html" target="_blank">About Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
+            </nav>
+        </div>
     </header>
 
-<img src="https://raw.githubusercontent.com/Akshunagg/Bannner/refs/heads/main/1234.png" alt="Banner" width="1522" height="700">
+    <section class="hero-banner">
+        <img src="https://raw.githubusercontent.com/Akshunagg/Bannner/refs/heads/main/1234.png" alt="Sports Banner">
+        <div class="banner-overlay">
+            <h2>Elevate Your Game With Premium Sports Gear</h2>
+            <p>Discover top-quality equipment for all your favorite sports at unbeatable prices</p>
+            <a href="#sports" class="cta-button">Shop Now</a>
+        </div>
+    </section>
 
+    <h2 class="section-title" id="sports">Browse By Sport</h2>
+    
+    <div class="sports-container">
+        <div class="sport-card">
+            <img src="https://raw.githubusercontent.com/Akshunagg/Cricket/main/hmm.jpg" alt="Cricket">
+            <div class="sport-card-content">
+                <h3>Cricket</h3>
+                <p>From bats to protective gear, find everything you need for the gentleman's game.</p>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/cricproducts.html" target="_blank" class="sport-link">Shop Cricket</a>
+            </div>
+        </div>
+        
+        <div class="sport-card">
+            <img src="https://raw.githubusercontent.com/Akshunagg/Badminton/main/pqrs.jpg" alt="Badminton">
+            <div class="sport-card-content">
+                <h3>Badminton</h3>
+                <p>Lightweight rackets, shuttlecocks, and court shoes for your perfect game.</p>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/badminproducts.html" target="_blank" class="sport-link">Shop Badminton</a>
+            </div>
+        </div>
+        
+        <div class="sport-card">
+            <img src="https://raw.githubusercontent.com/Akshunagg/Basketball/main/123.jpg" alt="Basketball">
+            <div class="sport-card-content">
+                <h3>Basketball</h3>
+                <p>Dribble, shoot, and score with our premium basketball equipment.</p>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/basketproducts.html" target="_blank" class="sport-link">Shop Basketball</a>
+            </div>
+        </div>
+    </div>
 
-<center><h1>Browse By Sport</h1></center>
+    <section class="features">
+        <h2 class="section-title">Why Choose Flexify?</h2>
+        <div class="features-container">
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
+                <h3>Free Shipping</h3>
+                <p>Free delivery on orders over $50</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">↩️</div>
+                <h3>Easy Returns</h3>
+                <p>30-day return policy on all items</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure Payment</h3>
+                <p>Your payment information is safe with us</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⭐</div>
+                <h3>Premium Quality</h3>
+                <p>Only the best brands and products</p>
+            </div>
+        </div>
+    </section>
 
-<a href="https://akshunagg.github.io/flexify-sport-shop/cricproducts.html" target=_blank title="Cricket"><div style="position: relative;"> <img src="https://raw.githubusercontent.com/Akshunagg/Cricket/main/hmm.jpg" alt="Cricket" width="300" height="300" style="position: absolute; left: 100px; top: 50px;"> </div>
-</a>
-
-<a href="https://akshunagg.github.io/flexify-sport-shop/badminproducts.html" target=_blank title="Badminton"><div style="position: relative;"> <img src="https://raw.githubusercontent.com/Akshunagg/Badminton/main/pqrs.jpg" alt="Badminton" width="300" height="300" style="position: absolute; left: 615px; top: 50px;"> </div>
-</a>
-
-<a href="https://akshunagg.github.io/flexify-sport-shop/basketproducts.html" target=_blank title="Basketball"><div style="position: relative;"> <img src="https://raw.githubusercontent.com/Akshunagg/Basketball/main/123.jpg" alt="BasketBall" width="300" height="300" style="position: absolute; left: 1100px; top: 50px;"> </div>
-</a>
-
-
-
-
-
-
-
-
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Flexify</h3>
+                <p>Your one-stop destination for premium sports equipment and accessories. We're passionate about helping athletes of all levels perform at their best.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/">Home</a>
+                <a href="about.html" target="_blank">About Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📧 info@flexifysports.com</p>
+                <p>📞 +1 (555) 123-4567</p>
+                <p>📍 123 Sports Avenue, Athletic City, AC 12345</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Flexify - The Sport Store. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>
-
-
-
