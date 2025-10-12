@@ -4,72 +4,561 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Flexify</title>
-<img src="https://raw.githubusercontent.com/Akshunagg/logooo/main/image.png" alt="logo" width="150" height="130" style="position: absolute; left: 0px; top: 7px;">
-   <style>
-        body {
+    <style>
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: white;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
 
         header {
-            background-color: #a9a276;
+            background-color: #B0A578;
             color: white;
-            padding: 25px;
-            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: 130px;
+            margin-right: 15px;
+        }
+
+        .store-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
         }
 
         nav a {
-            margin: 0 15px;
             color: white;
             text-decoration: none;
-            font-weight: ;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
 
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
+        .page-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 2.5rem;
+            color: #0a3d62;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: #B0A578;
+            margin: 10px auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h2 {
+            color: #0a3d62;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #B0A578;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #B0A578;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h3 {
+            margin-bottom: 5px;
+            color: #0a3d62;
+        }
+
+        .contact-text p {
+            color: #666;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form h2 {
+            color: #0a3d62;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #B0A578;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0a3d62;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #B0A578;
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #0a3d62;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #B0A578;
+        }
+
+        .map-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .map-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a3d62;
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+
+        .faq-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0a3d62;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .faq-item {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item h3 {
+            color: #0a3d62;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            color: #666;
+        }
 
         footer {
             background-color: #0a3d62;
-            color: White;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #B0A578;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #B0A578;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #B0A578;
+            border-radius: 50%;
             text-align: center;
-            padding: 15px;
+            line-height: 40px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: #9c8e5f;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+
+            .logo-container {
+                margin-bottom: 10px;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Flexify-The Sport Store</h1>
-     <nav>
-
-       <a href="https://akshunagg.github.io/flexify-sport-shop/" target="_blank">Home</a>
-          <a href="https://akshunagg.github.io/flexify-sport-shop/about.html" target="_blank">About Us</a>
-<a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
-            <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
-     </nav>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/Akshunagg/logooo/main/image.png" alt="Flexify Logo" class="logo">
+                <div class="store-name">Flexify</div>
+            </div>
+            <nav>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/">Home</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/about.html" target="_blank">About Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
+            </nav>
+        </div>
     </header>
 
-<div class="container">
-<center>
-    <h2>We’d love to hear from you!</h2>
-</center>
-    <p>Have a question about our products? Need help with your order? Want to share feedback? Our team is here to assist you. Feel free to reach out using the contact information below.</p>
+    <h1 class="page-title">Contact Us</h1>
+    
+    <p class="contact-intro">
+        Have a question about our products? Need help with your order? Want to share feedback? 
+        Our team is here to assist you. Feel free to reach out using the contact information below or fill out the form.
+    </p>
 
-    <div class="contact-info">
-      <p><strong>Email:</strong> support@flexify.com</p>
-      <p><strong>Phone:</strong> +91-9876543210</p>
-      <p><strong>Address:</strong> Flexify Sport Store, 2nd Floor, Galaxy Mall, Delhi - 110001, India</p>
-      <p><strong>Customer Support Hours:</strong> Monday to Saturday, 10:00 AM – 7:00 PM</p>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            
+            <div class="contact-detail">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-text">
+                    <h3>Email</h3>
+                    <p>support@flexify.com</p>
+                    <p>We'll respond within 24 hours</p>
+                </div>
+            </div>
+            
+            <div class="contact-detail">
+                <div class="contact-icon">📞</div>
+                <div class="contact-text">
+                    <h3>Phone</h3>
+                    <p>+91-9876543210</p>
+                    <p>Monday to Saturday, 10:00 AM – 7:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="contact-detail">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text">
+                    <h3>Address</h3>
+                    <p>Flexify Sport Store, 2nd Floor, Galaxy Mall, Delhi - 110001, India</p>
+                </div>
+            </div>
+            
+            <div class="contact-detail">
+                <div class="contact-icon">🕒</div>
+                <div class="contact-text">
+                    <h3>Store Hours</h3>
+                    <p>Monday - Saturday: 10:00 AM - 8:00 PM</p>
+                    <p>Sunday: 11:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="product">Product Inquiry</option>
+                        <option value="order">Order Support</option>
+                        <option value="return">Returns & Exchanges</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </div>
-  </div>
+    
+    <div class="map-section">
+        <h2>Find Us</h2>
+        <div class="map-container">
+            <div class="map-placeholder">
+                Interactive Map - Store Location
+            </div>
+        </div>
+    </div>
+    
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3>What is your return policy?</h3>
+                <p>We offer a 30-day return policy on all unused items with original packaging. Some restrictions may apply to personalized products.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Do you offer international shipping?</h3>
+                <p>Currently, we only ship within India. We're working on expanding our services to international locations soon.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How can I track my order?</h3>
+                <p>Once your order ships, you'll receive a tracking number via email that you can use to monitor your package's progress.</p>
+            </div>
+        </div>
+    </div>
 
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Flexify</h3>
+                <p>Your one-stop destination for premium sports equipment and accessories. We're passionate about helping athletes of all levels perform at their best.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/">Home</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/about.html" target="_blank">About Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
+                <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📧 support@flexify.com</p>
+                <p>📞 +91-9876543210</p>
+                <p>📍 Flexify Sport Store, 2nd Floor, Galaxy Mall, Delhi - 110001, India</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Flexify - The Sport Store. All rights reserved.
+        </div>
+    </footer>
 
-
-
-
-
-
-
-
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
