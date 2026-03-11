@@ -4,276 +4,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Flexify-The Sport Store</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        header {
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+        }
+
+        .header {
             background-color: #a9a276;
             color: white;
-            padding: 15px 25px;
-            position: relative;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 3px solid #8a7a5c;
         }
 
         .logo {
-            width: 150px;
-            height: 130px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
+        .nav {
+            margin: 10px 0;
         }
 
-        nav a {
+        .nav a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            margin: 0 20px;
+            font-size: 16px;
+            font-weight: 500;
         }
 
-        nav a:hover {
-            background-color: rgba(255,255,255,0.2);
+        .nav a:hover {
+            text-decoration: underline;
         }
 
-        .container {
+        .main {
             max-width: 1000px;
-            margin: 40px auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
-        h1, h2 {
-            color: #0a3d62;
-            margin-top: 0;
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: normal;
         }
 
-        table {
+        .cart-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
         }
 
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f1f1f1;
-            color: #0a3d62;
-            font-weight: 600;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .quantity-btn {
-            background-color: #a9a276;
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
+        .cart-table th {
+            text-align: left;
+            padding: 12px 10px;
+            background-color: #f5f5f5;
+            border-bottom: 2px solid #ddd;
             font-weight: bold;
-            transition: background-color 0.3s;
+            color: #555;
         }
 
-        .quantity-btn:hover {
-            background-color: #8a875e;
+        .cart-table td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #eee;
         }
 
-        .remove-btn {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .cart-table td:nth-child(4),
+        .cart-table td:nth-child(5) {
+            font-weight: bold;
         }
 
-        .remove-btn:hover {
-            background-color: #c0392b;
-        }
-
-        .cart-summary {
-            background-color: #f8f9fa;
+        .summary-box {
+            background-color: #f9f9f9;
             padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+            border-radius: 5px;
+            max-width: 350px;
+            margin-left: auto;
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #ddd;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ccc;
         }
 
-        .total {
+        .summary-row:last-of-type {
+            border-bottom: none;
             font-size: 20px;
             font-weight: bold;
-            color: #0a3d62;
-            margin-top: 15px;
+            color: #a9a276;
+            padding-top: 15px;
         }
 
-        .checkout {
+        .checkout-btn {
             display: block;
             width: 100%;
-            padding: 15px;
-            text-align: center;
-            background-color: #0a3d62;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-
-        .checkout:hover {
-            background-color: #083255;
-        }
-
-        .continue-shopping {
-            display: inline-block;
-            padding: 10px 20px;
+            padding: 12px;
             background-color: #a9a276;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-
-        .continue-shopping:hover {
-            background-color: #8a875e;
-        }
-
-        .cart-empty {
             text-align: center;
-            padding: 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
 
-        .cart-empty i {
-            font-size: 60px;
-            color: #ddd;
-            margin-bottom: 20px;
+        .checkout-btn:hover {
+            background-color: #8a7a5c;
         }
 
-        footer {
+        .continue-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #a9a276;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .continue-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
             background-color: #0a3d62;
             color: white;
             text-align: center;
-            padding: 25px 15px;
+            padding: 20px;
             margin-top: 50px;
+            font-size: 14px;
         }
 
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .remove-link {
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
         }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
+        .remove-link:hover {
+            color: #ff4444;
+            text-decoration: underline;
         }
 
-        .social-icons a {
-            color: white;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #a9a276;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-                margin: 20px;
-            }
-            
-            nav {
-                gap: 10px;
-            }
-            
-            nav a {
-                padding: 5px 10px;
+        @media (max-width: 600px) {
+            .nav a {
+                margin: 0 10px;
                 font-size: 14px;
             }
             
-            table {
+            .cart-table {
                 font-size: 14px;
             }
             
-            th, td {
-                padding: 10px 5px;
+            .summary-box {
+                margin-left: 0;
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/Akshunagg/logooo/main/image.png" alt="Flexify Logo" class="logo">
+    <div class="header">
+        <div class="logo">FLEXIFY</div>
+        <div class="nav">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Cart</a>
         </div>
-        <h1>Flexify-The Sport Store</h1>
-        <nav>
-            <a href="https://akshunagg.github.io/flexify-sport-shop/" target="_blank">Home</a>
-            <a href="https://akshunagg.github.io/flexify-sport-shop/about.html" target="_blank">About Us</a>
-            <a href="https://akshunagg.github.io/flexify-sport-shop/contact.html" target="_blank">Contact Us</a>
-            <a href="https://akshunagg.github.io/flexify-sport-shop/cart.html" target="_blank">Cart</a>
-        </nav>
-    </header>
+    </div>
 
-    <div class="container">
-        <h2><i class="fas fa-shopping-cart"></i> Your Shopping Cart</h2>
+    <div class="main">
+        <h1>Shopping Cart</h1>
         
-        <table>
+        <table class="cart-table">
             <thead>
                 <tr>
                     <th>Product</th>
@@ -281,56 +199,38 @@
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Subtotal</th>
-                    <th>Action</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Cricket Bat</td>
                     <td>Cricket</td>
-                    <td>
-                        <div class="quantity-control">
-                            <button class="quantity-btn">-</button>
-                            <span>1</span>
-                            <button class="quantity-btn">+</button>
-                        </div>
-                    </td>
+                    <td>1</td>
                     <td>₹1500</td>
                     <td>₹1500</td>
-                    <td><button class="remove-btn">Remove</button></td>
+                    <td><a href="#" class="remove-link">Remove</a></td>
                 </tr>
                 <tr>
                     <td>Badminton Racket</td>
                     <td>Badminton</td>
-                    <td>
-                        <div class="quantity-control">
-                            <button class="quantity-btn">-</button>
-                            <span>2</span>
-                            <button class="quantity-btn">+</button>
-                        </div>
-                    </td>
+                    <td>2</td>
                     <td>₹800</td>
                     <td>₹1600</td>
-                    <td><button class="remove-btn">Remove</button></td>
+                    <td><a href="#" class="remove-link">Remove</a></td>
                 </tr>
                 <tr>
                     <td>Basketball</td>
                     <td>Basketball</td>
-                    <td>
-                        <div class="quantity-control">
-                            <button class="quantity-btn">-</button>
-                            <span>1</span>
-                            <button class="quantity-btn">+</button>
-                        </div>
-                    </td>
+                    <td>1</td>
                     <td>₹1000</td>
                     <td>₹1000</td>
-                    <td><button class="remove-btn">Remove</button></td>
+                    <td><a href="#" class="remove-link">Remove</a></td>
                 </tr>
             </tbody>
         </table>
 
-        <div class="cart-summary">
+        <div class="summary-box">
             <div class="summary-row">
                 <span>Subtotal:</span>
                 <span>₹4100</span>
@@ -340,83 +240,23 @@
                 <span>₹100</span>
             </div>
             <div class="summary-row">
-                <span>Tax:</span>
+                <span>Tax (5%):</span>
                 <span>₹205</span>
             </div>
-            <div class="summary-row total">
+            <div class="summary-row">
                 <span>Total:</span>
                 <span>₹4405</span>
             </div>
-        </div>
-
-        <a href="#" class="checkout">Proceed to Checkout</a>
-        <div style="text-align: center;">
-            <a href="https://akshunagg.github.io/flexify-sport-shop/" class="continue-shopping">Continue Shopping</a>
+            
+            <button class="checkout-btn">Proceed to Checkout</button>
+            <center>
+                <a href="#" class="continue-link">← Continue Shopping</a>
+            </center>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2023 Flexify-The Sport Store. All rights reserved.</p>
-            <p>Your one-stop destination for all sports equipment and accessories.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Quantity control functionality
-        document.querySelectorAll('.quantity-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const quantitySpan = this.parentElement.querySelector('span');
-                let quantity = parseInt(quantitySpan.textContent);
-                
-                if (this.textContent === '+') {
-                    quantity++;
-                } else if (this.textContent === '-' && quantity > 1) {
-                    quantity--;
-                }
-                
-                quantitySpan.textContent = quantity;
-                updateCartTotals();
-            });
-        });
-
-        // Remove item functionality
-        document.querySelectorAll('.remove-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const row = this.closest('tr');
-                row.remove();
-                updateCartTotals();
-            });
-        });
-
-        // Function to update cart totals
-        function updateCartTotals() {
-            let subtotal = 0;
-            
-            document.querySelectorAll('tbody tr').forEach(row => {
-                const price = parseInt(row.cells[3].textContent.replace('₹', ''));
-                const quantity = parseInt(row.cells[2].querySelector('span').textContent);
-                const rowTotal = price * quantity;
-                
-                row.cells[4].textContent = '₹' + rowTotal;
-                subtotal += rowTotal;
-            });
-            
-            const shipping = 100;
-            const tax = Math.round(subtotal * 0.05);
-            const total = subtotal + shipping + tax;
-            
-            document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = '₹' + subtotal;
-            document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = '₹' + tax;
-            document.querySelector('.summary-row.total span:last-child').textContent = '₹' + total;
-        }
-    </script>
-
+    <div class="footer">
+        <p>&copy; 2024 Flexify-The Sport Store. All rights reserved.</p>
+    </div>
 </body>
 </html>
